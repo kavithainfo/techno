@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="helloWorldBean" class="com.kavi.learnspring.setterInjection.HelloWorld">
+        <property name="name" value="Kavitha"/>
+    </bean>
+
+     <bean id="countryBean" class="com.kavi.learnspring.setterInjection.Country">
+        <property name="name" value="UK"/>
+        <property name="capital" ref="capitalBean"/>
+        <property name="states">
+            <list>
+                <value>Aberdeen</value>
+                <value>Glasgow</value>
+                <value>Edinburgh</value>
+            </list>
+        </property>
+    </bean>
+
+     <bean id="countryConstructorDIBean" class="com.kavi.learnspring.constructorInjection.CountryConstructorDI">
+        <constructor-arg index="0" type="java.lang.String" value="United Kingdom"></constructor-arg>
+        <constructor-arg index="1" ref="capitalBean"></constructor-arg>
+    </bean>
+
+    <bean id="capitalBean" class="com.kavi.learnspring.setterInjection.Capital">
+        <property name="name" value="London"/>
+    </bean>
+
+
+    <bean id="employeeBean" class="com.kavi.learnspring.inheritance.Employee" parent="personBean">
+	 	<property name="id" value="1289"/>
+    </bean>
+
+    <bean id="personBean" class="com.kavi.learnspring.inheritance.Person">
+        <property name="name" value="John"/>
+    </bean>
+
+</beans>
